@@ -74,7 +74,7 @@ pub fn load_tools() {
 
     let tools: BackendMap = tools
         .into_iter()
-        .map(|backend| (backend.ba().short.clone(), backend))
+        .map(|backend| (backend.ba().full().clone(), backend))
         .collect();
     *memo_tools = Some(tools.clone());
     time!("load_tools done");
@@ -96,10 +96,10 @@ pub fn get(ba: &BackendArg) -> Option<ABackend> {
     load_tools();
     let mut m = TOOLS.lock().unwrap();
     let backends = m.as_mut().unwrap();
-    if let Some(backend) = backends.get(&ba.short) {
+    if let Some(backend) = backends.get(&ba.full()) {
         Some(backend.clone())
     } else if let Some(backend) = arg_to_backend(ba.clone()) {
-        backends.insert(ba.short.clone(), backend.clone());
+        backends.insert(ba.full(), backend.clone());
         Some(backend)
     } else {
         None

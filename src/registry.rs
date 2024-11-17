@@ -98,7 +98,12 @@ fn normalize_remote(remote: &str) -> eyre::Result<String> {
 
 pub fn full_to_url(full: &str) -> String {
     let (_backend, url) = full.split_once(':').unwrap_or(("", full));
-    if url.starts_with("https://") {
+    if url.starts_with("https://")
+        || url.starts_with("http://")
+        || url.starts_with("git@")
+        || url.starts_with("ssh://")
+        || url.starts_with("git://")
+    {
         url.to_string()
     } else {
         format!("https://github.com/{url}.git")

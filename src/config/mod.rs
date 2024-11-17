@@ -43,10 +43,10 @@ pub struct Config {
     pub config_files: ConfigMap,
     pub project_root: Option<PathBuf>,
     pub all_aliases: AliasMap,
+    pub repo_urls: HashMap<String, String>,
     aliases: AliasMap,
     env: OnceCell<EnvResults>,
     env_with_sources: OnceCell<EnvWithSources>,
-    repo_urls: HashMap<String, String>,
     shorthands: OnceLock<Shorthands>,
     tasks: OnceCell<BTreeMap<String, Task>>,
     tool_request_set: OnceCell<ToolRequestSet>,
@@ -199,8 +199,15 @@ impl Config {
                 .get(plugin_name)
                 .map(|full| registry::full_to_url(&full[0]))
                 .or_else(|| {
-                    if plugin_name.starts_with("https://") || plugin_name.split('/').count() == 2 {
-                        Some(registry::full_to_url(plugin_name))
+                    if plugin_name.starts_with("https://")
+                        || plugin_name.starts_with("http://")
+                        || plugin_name.starts_with("git@")
+                        || plugin_name.starts_with("ssh://")
+                        || plugin_name.starts_with("git://")
+                    {
+                        Some(plugin_name.to_string())
+                    } else if plugin_name.split('/').count() == 2 {
+                        Some(format!("https://github.com/{}.git", plugin_name))
                     } else {
                         None
                     }
