@@ -1,5 +1,30 @@
 # Changelog
 
+## [2024.11.17](https://github.com/jdx/mise/compare/v2024.11.16..v2024.11.17) - 2024-11-19
+
+### 🚀 Features
+
+- **(bun)** windows support by [@jdx](https://github.com/jdx) in [#3075](https://github.com/jdx/mise/pull/3075)
+- added more aqua tools by [@jdx](https://github.com/jdx) in [#3079](https://github.com/jdx/mise/pull/3079)
+
+### 🐛 Bug Fixes
+
+- reuse tool options on `mise use` from config file by [@jdx](https://github.com/jdx) in [#3076](https://github.com/jdx/mise/pull/3076)
+
+### 📚 Documentation
+
+- added GoatCounter by [@jdx](https://github.com/jdx) in [9ab42fa](https://github.com/jdx/mise/commit/9ab42fab8f1e9fa8550a8512f65c13a951776c19)
+- use mise tasks for publishing by [@jdx](https://github.com/jdx) in [4b6a780](https://github.com/jdx/mise/commit/4b6a7804fe0c6073237c330b82701a5a15179d49)
+- use mise tasks for publishing by [@jdx](https://github.com/jdx) in [#3073](https://github.com/jdx/mise/pull/3073)
+
+### ⚡ Performance
+
+- improve init performance by [@jdx](https://github.com/jdx) in [#3074](https://github.com/jdx/mise/pull/3074)
+
+### 🔍 Other Changes
+
+- only add PR comment for PRs by [@jdx](https://github.com/jdx) in [5499bfb](https://github.com/jdx/mise/commit/5499bfb362f9a0f32dcad4c676e7085b3ce6cca3)
+
 ## [2024.11.16](https://github.com/jdx/mise/compare/v2024.11.15..v2024.11.16) - 2024-11-18
 
 ### 🐛 Bug Fixes
